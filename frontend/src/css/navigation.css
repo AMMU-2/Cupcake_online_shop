@@ -1,0 +1,67 @@
+.mainRow {
+    margin: 20px 40px 10px;
+  }
+  aside {
+    clear: both;
+  }
+  
+  .aside1, .aside2, .aside3 {
+    width: 100%;
+    height: auto;
+    padding: 10px 5px;
+    border-radius: 18px;
+    border: 2px solid #352729;
+    margin-bottom: 30px;
+  }
+  .aside1 {
+    display: inline-block;
+    background: #6F2A3E;
+  }
+  .aside1 h3 {
+    border-bottom: 1px solid #FBEEEE;
+    text-align: center;
+    color: #FBEEEE;
+  }
+  .aside1 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .aside1 ul li {
+    text-align: center;
+  }
+  .aside1 ul li a {
+    display: block;
+    color: #FBEEEE;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 30px;
+  }
+  .aside1 ul li a:hover {
+    background: #E34C77;
+  }
+  .aside2 {
+    color: #C1053B;
+    background: #FFFFFF url(../icons/phone.png) 0px 95% no-repeat;
+  }
+ 
+  .aside2 h3, .aside3 h3 {
+    border-bottom: 1px solid #352729;
+    text-align: center;
+    color: #352729;
+  }
+  .aside2 p {
+    padding-left: 60px;
+    margin-top: 10px;
+  }
+  .aside3 #searchBox2 {
+    box-sizing: border-box;
+    border: 1px solid #291A1D;
+    border-radius: 5px;
+    padding: 5px 25px 5px;
+    background-image: url(../icons/search_icon.png);
+    background-repeat: no-repeat;
+    background-size: 25px;
+    margin: 10px 5px;
+    width: 95%;
+  }

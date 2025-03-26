@@ -1,0 +1,38 @@
+.contacts {
+  padding: 30px;
+  text-align: center;
+  background-color: #ffe4ec; 
+  border-radius: 10px;
+  border: 2px solid #ff69b4; 
+}
+ 
+.contact-heading {
+  font-size: 28px;
+  color: #d63384; 
+  font-weight: bold;
+  text-transform: uppercase;
+}
+ 
+.contact-subtext {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #a83268;
+}
+ 
+.contact-info {
+  background-color: #ffccd5;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: left;
+  box-shadow: 2px 2px 10px rgba(255, 105, 180, 0.3); 
+  border: 1px solid #ff1493; 
+}
+ 
+.blue-team {
+  color: #ff1493;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+ 
+ 

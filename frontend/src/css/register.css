@@ -1,0 +1,46 @@
+
+.register-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+ 
+.form-group {
+  margin-bottom: 15px;
+}
+ 
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+ 
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+ 
+.pink-border {
+  border: 2px solid #E34C77; /* Pink border for textboxes */
+  border-radius: 5px;
+}
+ 
+.pink-border:focus {
+  outline: none;
+  border: 2px solid #FBD6DC; /* Lighter pink border on focus */
+}
+ 
+.btn-pink {
+  background-color: #E34C77; /* Pink color for button */
+  border: none;
+  color: #FFFFFF;
+}
+ 
+.btn-pink:hover {
+  background-color: #C71749; /* Darker pink on hover */
+}
+ 
+h2 {
+  text-align: center;
+}

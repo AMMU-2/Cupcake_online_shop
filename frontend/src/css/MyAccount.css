@@ -1,0 +1,53 @@
+.my-account-card {
+  background-color: #ffdde1; 
+  border: 2px solid #ff6b81;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+ 
+.account-details p {
+  font-size: 16px;
+  padding: 8px 0;
+}
+ 
+.form-control {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  margin: 5px 0;
+}
+ 
+
+.btn-edit {
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+ 
+.btn-edit:hover {
+  background-color: #ff3b5c;
+}
+
+.btn-update {
+  background-color: #ff6b81;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+ 
+.btn-update:hover {
+  background-color: #ff3b5c;
+}
+ 

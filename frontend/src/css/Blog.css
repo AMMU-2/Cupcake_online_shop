@@ -1,0 +1,41 @@
+.blog {
+  padding: 30px;
+  text-align: center;
+  background-color: #ffe4ec; 
+  border-radius: 10px;
+}
+ 
+.blog-heading {
+  font-size: 28px;
+  color: #d63384;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+ 
+.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+ 
+.blog-item {
+  width: 300px;
+  padding: 20px;
+  background-color: #ffccd5; 
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(255, 105, 180, 0.3); 
+  border: 1px solid #ff1493; 
+}
+ 
+.blog-item h3 {
+  font-size: 20px;
+  color: #ff1493;
+}
+ 
+.blog-item p {
+  font-size: 16px;
+  color: #a83268;
+}
+ 
+ 

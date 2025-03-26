@@ -1,0 +1,103 @@
+.cupcake-details {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+ 
+.cupcake-card {
+  background-color: #ffebef; 
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+ 
+.cupcake-img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  border: 5px solid #fbd6d6;
+}
+ 
+.cupcake-img:hover {
+  border: 2px solid #ca2a58;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+ 
+.cupcake-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ca2a58;
+}
+ 
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+ 
+
+.add-to-cart-btn {
+  background-color: rgba(226, 127, 168, 0.873); 
+  color: black; 
+  border: 2px solid #ff4081;
+  padding: 8px 16px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.add-to-cart-btn:active {
+  background-color: #D81B60;
+  color: white;
+}
+ 
+.add-to-cart-btn:hover {
+  background-color: #D81B60;
+}
+ 
+
+.back-button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  transition: background 0.3s ease;
+}
+ 
+.back-button:hover {
+  background-color: #000; 
+}
+ 
+.wishlist-link {
+  display: block;
+  margin-top: 10px;
+  color: #72686c;
+  text-decoration: none;
+  font-size: 14px;
+}
+ 
+.wishlist-link:hover {
+  text-decoration: underline;
+}
+ 
+@media screen and (max-width: 768px) {
+  .cupcake-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+ 
+  .image-container {
+    justify-content: center;
+  }
+ 
+  .cupcake-img {
+    max-width: 150px;
+  }};
+ 

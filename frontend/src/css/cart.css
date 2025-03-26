@@ -1,0 +1,137 @@
+
+.cart-modal {
+  background-color: #ffe6eb; 
+  border: 3px solid #E34C77; 
+  border-radius: 12px;
+  padding: 20px;
+  color: #4a1c2d; 
+  text-align: center;
+  width: 400px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+}
+
+
+.modal-header {
+  background-color: #E34C77;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.modal-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+
+.modal-header .btn-close {
+  background-color: #ff80ab !important;
+  color: white !important;
+  border: none;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-header .btn-close:hover {
+  background-color: #d81b60 !important;
+  opacity: 0.9;
+}
+
+
+.table {
+  background-color: #fff0f5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #ff80ab;
+  color: white;
+  text-align: center;
+}
+
+.table td {
+  color: #6d1b3f;
+  text-align: center;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+
+.btn-sm {
+  background-color: #E34C77 !important;
+  color: white !important;
+  border: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.btn-sm:hover {
+  background-color: #d81b60 !important;
+  opacity: 0.9;
+}
+
+
+.btn-danger {
+  background-color: #E34C77 !important;
+  border: none;
+  padding: 6px 12px;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #d81b60 !important;
+  opacity: 0.9;
+}
+
+.cart-summary {
+  background-color: #fff0f5;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+.cart-summary p {
+  margin: 5px 0;
+  font-weight: bold;
+  color: black !important; 
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #d81b60;
+}
+
+.modal-footer .btn-primary {
+  background-color: #E34C77;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #d81b60;
+}

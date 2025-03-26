@@ -1,0 +1,33 @@
+.specials {
+    padding: 20px;
+  }
+  
+  .specials-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .special-item {
+    width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .special-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .special-item h3 {
+    margin: 10px 0;
+  }
+  
+  .special-item p {
+    color: #dc3545;
+  }

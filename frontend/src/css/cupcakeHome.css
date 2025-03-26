@@ -1,0 +1,56 @@
+.cupcakeDiv {
+  background-color: #FFFFFF;
+  height: 360px; 
+  text-align: center;
+  font-size: 85%;
+  padding: 5px 10px 3px;
+  border: 1px solid transparent;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cupcakeDiv:hover {
+  border: 2px solid #E34C77; 
+}
+
+.cupcakeDiv img {
+  height: 120px;
+  margin-bottom: 10px; 
+}
+
+.cupcakeText {
+  width: 100%;
+  height: auto; 
+  text-align: justify;
+  line-height: 1.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
+}
+
+.link {
+  display: block; 
+  width: 85%;
+  padding: 5px 10px; 
+  margin: 3px auto; 
+  background: #FFF4F6;
+  font-size: 114%;
+  border: 1px solid #352729;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.cupcakeDiv .link:hover {
+  background: #E34C77;
+  border: 2px solid #222222;
+  font-size: 125%;
+  color: #EBE8EA;
+}
+
+h5 {
+  margin: 5px 0; 
+  font-size: 90%; 
+}

@@ -1,0 +1,12 @@
+.add-to-wishlist-button {
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-to-wishlist-button:hover {
+    background-color: #e0a800;
+  }

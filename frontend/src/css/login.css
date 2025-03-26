@@ -1,0 +1,49 @@
+
+
+
+ .authenticateBox {
+  position: relative;
+  background-color: #FEFEFE;
+  margin: 30px auto;
+  border: 1px solid #301B1F;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 4px 5px 4px #CCCCCC;
+}
+ 
+.authenticateBox h4 {
+  background: #E34C77;
+  color: #FFFFFF;
+  text-align: left;
+  padding-left: 15px;
+  font-size: 105%;
+  font-weight: 500;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+ 
+.authenticateBox .form-control {
+  border: 2px solid #E34C77; 
+  border-radius: 5px;
+}
+ 
+.authenticateBox .form-control:focus {
+  outline: none;
+  border: 2px solid #FBD6DC;
+}
+ 
+.btn-pink {
+  background-color: #E34C77; 
+  border: none;
+  color: #FFFFFF;
+}
+ 
+.btn-pink:hover {
+  background-color: #C71749; 
+}
+ 
+.authenticateBox p {
+  margin-top: 10px;
+} 
+  
