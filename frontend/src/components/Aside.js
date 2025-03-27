@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/navigation.css';
+import '../css/navigation.css'; // Importing the CSS file for styling
 
 const Aside = () => {
   return (
-    <aside className="aside col-3 col-t-4 col-m-12">
+    <aside className="aside col-3 col-t-4 col-m-12"> {/* Sidebar container with responsive classes */}
+      
+      {/* Category Section */}
       <div className="aside1">
         <h3>CATEGORIES</h3>
         <ul>
+          {/* List of categories with navigation links */}
           <li><Link to="/categories/gifts-combos">Gifts/Combos</Link></li>
           <li><Link to="/categories/premium-cupcakes">Premium Cupcakes</Link></li>
           <li><Link to="/categories/birthday-cupcakes">Birthday Cupcakes</Link></li>
@@ -20,17 +23,17 @@ const Aside = () => {
           <li><Link to="/categories/midnight-delivery">Midnight Delivery</Link></li>
         </ul>
       </div>
+
+      {/* Contact Section */}
       <div className="aside2">
         <h3>CONTACT US</h3>
-        <p>Our support is available 24/7.<br/>
-        +91-9988776655 / +91-9988776654</p>
-      </div>
-      <div className="aside3">
-        <h3>FIND CUPCAKES</h3>
-        <input type="text" placeholder="Search" id="searchBox2" />
+        <p>
+          Our support is available 24/7.<br/>
+          +91-9988776655 / +91-9988776654 {/* Contact details for support */}
+        </p>
       </div>
     </aside>
   );
 };
 
-export default Aside;
+export default Aside; // Exporting the Aside component
