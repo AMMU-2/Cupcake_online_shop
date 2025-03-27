@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
  
-
+//user register
 exports.register = async (req, res) => {
     try {
         const { name, email, password, confirmPassword, phone, address } = req.body;
@@ -30,7 +30,7 @@ exports.register = async (req, res) => {
     }
 };
  
-
+//user login
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
     }
 };
  
-
+//user veiw profile
 exports.getUserProfile = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
@@ -76,7 +76,7 @@ exports.getUserProfile = async (req, res) => {
     }
 };
  
-
+//user update
 exports.update = async (req, res) => {
     try {
         const userId = req.params.id;
@@ -103,7 +103,7 @@ exports.update = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
+//delete user
 exports.deleteUser = async (req, res) => {
     try {
         const { userId } = req.body;
@@ -115,7 +115,7 @@ exports.deleteUser = async (req, res) => {
     }
 };
  
-
+//user logout
 exports.logout = (req, res) => {
     res.status(200).json({ message: "Logout successful" });
 };
