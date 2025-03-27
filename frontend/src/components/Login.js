@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,36 +6,36 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/login.css";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [email, setEmail] = useState(""); // State to store user email input
+  const [password, setPassword] = useState(""); // State to store user password input
+  const [error, setError] = useState(""); // State to handle error messages
+  const navigate = useNavigate(); // Hook to navigate to different routes
+  const dispatch = useDispatch(); // Hook to dispatch actions to Redux store
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(""); // Reset error before making a request
 
     try {
       const response = await fetch("http://localhost:5000/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password }), // Send user credentials
       });
 
       const data = await response.json();
 
       if (data.error) {
-        setError(data.error);
+        setError(data.error); // Display error message if login fails
       } else {
-        
+        // Dispatch login action to update Redux store with user details
         dispatch(loginSuccess({ token: data.token, user: data.user }));
 
-       
+        // Redirect to home page after successful login
         navigate("/");
       }
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      setError("An error occurred. Please try again."); // Generic error message
       console.error("Login Error:", error);
     }
   };
@@ -54,7 +53,7 @@ export default function Login() {
                   type="email"
                   className="form-control"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)} // Update email state on change
                   required
                 />
               </div>
@@ -64,21 +63,12 @@ export default function Login() {
                   type="password"
                   className="form-control"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)} // Update password state on change
                   required
                 />
               </div>
-              {error && <p className="text-danger">{error}</p>}
+              {error && <p className="text-danger">{error}</p>} {/* Display error message if any */}
               <button type="submit" className="btn btn-pink btn-block mt-3">
                 Login
               </button>
-            </form>
-            <p>
-              Don't have an account? <Link to="/register">Create Account</Link>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+            </
