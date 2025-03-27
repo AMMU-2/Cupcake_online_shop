@@ -5,9 +5,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectCupcake } from "../redux/cupcakeSlice";
 import Cart from "../components/cart";
-import PopupModal from "../components/PopupModel"
- 
+import PopupModal from "../components/PopupModel";
+
 const GiftsCombos = () => {
+  // State variables for managing cupcakes, cart visibility, cart items, and login popup
   const [cupcakes, setCupcakes] = useState([]);
   const [cartShow, setCartShow] = useState(false);
   const [cartItems, setCartItems] = useState([]); 
@@ -16,7 +17,8 @@ const GiftsCombos = () => {
   const navigate = useNavigate();
 
   const userId = localStorage.getItem("userId");
- 
+
+  // Fetch cupcakes from the API when the component mounts
   useEffect(() => {
     fetch('http://localhost:5000/cake/category/Gifts Combos')
       .then((response) => response.json())
@@ -26,12 +28,14 @@ const GiftsCombos = () => {
       })
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
- 
+
+  // Handles viewing a cupcake's details
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
 
+  // Handles adding a cupcake to the cart
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
       setShowPopup(true);
@@ -68,7 +72,7 @@ const GiftsCombos = () => {
       alert(`Error: ${error.message}`);
     }
   };
- 
+
   return (
     <div className="main">
       <h2>Gifts Combos</h2>
@@ -90,21 +94,24 @@ const GiftsCombos = () => {
           <p>No gifts combos available.</p>
         )}
       </div>
+      
+      {/* Login popup modal */}
       <PopupModal
-            show={showPopup}
-            onClose={() => setShowPopup(false)}
-            onLogin={() => navigate("/login")}
-          />
+        show={showPopup}
+        onClose={() => setShowPopup(false)}
+        onLogin={() => navigate("/login")}
+      />
+      
+      {/* Shopping cart component */}
       <Cart 
         show={cartShow} 
         handleClose={() => setCartShow(false)} 
         userId={localStorage.getItem("userId")}  
         updateQuantity={(id, amount) => {}}
         deleteItem={(id) => {}}
-        
       />
     </div>
   );
 };
- 
+
 export default GiftsCombos;
