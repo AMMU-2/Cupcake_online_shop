@@ -8,6 +8,7 @@ import Cart from "../components/cart";
 import PopupModal from "../components/PopupModel"
  
 const EgglessCupcakes = () => {
+  // State to store cupcakes data
   const [cupcakes, setCupcakes] = useState([]);
   const [cartShow, setCartShow] = useState(false);
   const [cartItems, setCartItems] = useState([]); 
@@ -15,6 +16,7 @@ const EgglessCupcakes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Retrieve user ID from local storage
   const userId = localStorage.getItem("userId");
  
   useEffect(() => {
@@ -22,7 +24,7 @@ const EgglessCupcakes = () => {
     fetch('http://localhost:5000/cake/category/Eggless Cupcakes')
       .then((data) => {
         console.log(data);
-        setCupcakes(data);
+        setCupcakes(data); // Storing fetched cupcakes in state
       })
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
@@ -35,6 +37,7 @@ const EgglessCupcakes = () => {
  
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
+      // Show login popup if user is not logged in
       setShowPopup(true);
       return;
     }
@@ -61,7 +64,7 @@ const EgglessCupcakes = () => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
+      setCartItems(responseData.cartItems); // Update cart items state
       setCartShow(true);
 
     } catch (error) {
@@ -75,6 +78,7 @@ const EgglessCupcakes = () => {
       <h2>Eggless Cupcakes</h2>
       <div className="cupcake-list">
         {cupcakes.length > 0 ? (
+          // Rendering the list of cupcakes
           cupcakes.map(cupcake => (
             <Cupcake
               key={cupcake._id}
