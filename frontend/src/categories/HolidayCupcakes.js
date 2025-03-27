@@ -8,6 +8,7 @@ import Cart from "../components/cart";
 import PopupModal from "../components/PopupModel"
  
 const HolidayCupcakes = () => {
+ // State variables for managing cupcakes, cart visibility, cart items, and login popup
   const [cupcakes, setCupcakes] = useState([]);
   const [cartShow, setCartShow] = useState(false);
   const [cartItems, setCartItems] = useState([]); 
@@ -17,6 +18,7 @@ const HolidayCupcakes = () => {
 
   const userId = localStorage.getItem("userId");
  
+  // Fetch holiday cupcakes from the backend on component mount
   useEffect(() => {
     fetch('http://localhost:5000/cake/category/Holiday Cupcakes') 
       .then((response) => response.json())
@@ -27,11 +29,13 @@ const HolidayCupcakes = () => {
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
  
+  // Handles viewing cupcake details and navigates to the details page
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
 
+  // Handles adding cupcakes to the cart and checks user authentication
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
       setShowPopup(true);
@@ -73,6 +77,7 @@ const HolidayCupcakes = () => {
     <div className="main">
       <h2>Holiday Cupcakes</h2>
       <div className="cupcake-list">
+        {/* Render list of cupcakes if available, else show message */}
         {cupcakes.length > 0 ? (
           cupcakes.map(cupcake => (
             <Cupcake
@@ -90,11 +95,15 @@ const HolidayCupcakes = () => {
           <p>No holiday cupcakes available.</p>
         )}
       </div>
+      
+      {/* Popup modal for login prompt if user is not logged in */}
       <PopupModal
             show={showPopup}
             onClose={() => setShowPopup(false)}
             onLogin={() => navigate("/login")}
           />
+      
+      {/* Cart component for showing cart items */}
       <Cart 
         show={cartShow} 
         handleClose={() => setCartShow(false)} 
