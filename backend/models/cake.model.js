@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
- 
+ //Defines a new schema -cakeSchema 
 const cakeSchema = new mongoose.Schema({
   cakeName: { type: String, required: true },
   description: { type: String, required: true },
