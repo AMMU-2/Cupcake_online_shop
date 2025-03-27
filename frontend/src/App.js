@@ -65,19 +65,19 @@ const App = () => {
     },
   ];
 
-  // ✅ Load user and cart state on app start
+  //  Load user and cart state on app start
   useEffect(() => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (token && user) {
-      dispatch(loginSuccess({ token, user })); // ✅ Load user state
+      dispatch(loginSuccess({ token, user })); //  Load user state
     } else {
-      dispatch(logout()); // ✅ Ensure Redux clears state on logout
-      dispatch(clearCart()); // ✅ Reset cart on logout
+      dispatch(logout()); //  Ensure Redux clears state on logout
+      dispatch(clearCart()); //  Reset cart on logout
     }
 
-    dispatch(loadCartFromStorage()); // ✅ Load cart from localStorage
+    dispatch(loadCartFromStorage()); //  Load cart from localStorage
   }, [dispatch]);
 
   return (
