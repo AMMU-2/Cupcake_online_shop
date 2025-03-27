@@ -18,6 +18,7 @@ const EgglessCupcakes = () => {
   const userId = localStorage.getItem("userId");
  
   useEffect(() => {
+    // Fetching eggless cupcakes data from the backend API
     fetch('http://localhost:5000/cake/category/Eggless Cupcakes')
       .then((data) => {
         console.log(data);
@@ -27,6 +28,7 @@ const EgglessCupcakes = () => {
   }, []);
  
   const handleView = (cupcake) => {
+    // Dispatch selected cupcake to Redux store and navigate to details page
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
@@ -67,6 +69,7 @@ const EgglessCupcakes = () => {
       alert(`Error: ${error.message}`);
     }
   };
+  
   return (
     <div className="main">
       <h2>Eggless Cupcakes</h2>
@@ -99,11 +102,9 @@ const EgglessCupcakes = () => {
         userId={localStorage.getItem("userId")} 
         updateQuantity={(id, amount) => {}}
         deleteItem={(id) => {}}
-        
       />
     </div>
   );
 };
  
 export default EgglessCupcakes;
- 
