@@ -8,6 +8,7 @@ import Cart from "../components/cart";
 import PopupModal from "../components/PopupModel"
  
 const MidnightCupcakes = () => {
+ // State to store fetched cupcakes data
   const [cupcakes, setCupcakes] = useState([]);
   const [cartShow, setCartShow] = useState(false);
   const [cartItems, setCartItems] = useState([]); 
@@ -15,9 +16,11 @@ const MidnightCupcakes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+ // Retrieve user ID from local storage
   const userId = localStorage.getItem("userId");
- 
+
   useEffect(() => {
+    // Fetch cupcakes from the backend API
     fetch('http://localhost:5000/cake/category/Midnight Delivery')
       .then((response) => response.json())
       .then((data) => {
@@ -26,15 +29,17 @@ const MidnightCupcakes = () => {
       })
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
- 
+
+ // Handle cupcake selection for viewing details
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
 
+ // Handle adding cupcake to the cart
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
-      setShowPopup(true);
+      setShowPopup(true); // Show login popup if user is not logged in
       return;
     }
 
@@ -61,7 +66,7 @@ const MidnightCupcakes = () => {
 
       console.log("Cart Updated:", responseData);
       setCartItems(responseData.cartItems);
-      setCartShow(true);
+      setCartShow(true); // Show cart modal
 
     } catch (error) {
       console.error("Error adding to cart:", error);
@@ -90,11 +95,15 @@ const MidnightCupcakes = () => {
           <p>No midnight cupcakes available.</p>
         )}
       </div>
+
+       {/* Show popup modal if user is not logged in */}
       <PopupModal
             show={showPopup}
             onClose={() => setShowPopup(false)}
             onLogin={() => navigate("/login")}
-          />
+       />
+
+      {/* Cart component with show/hide functionality */}
       <Cart 
         show={cartShow} 
         handleClose={() => setCartShow(false)} 
