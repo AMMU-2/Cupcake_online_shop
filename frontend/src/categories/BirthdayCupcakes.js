@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';// Importing necessary React hooks and components
 import Cupcake from '../components/cupcake';
 import '../css/cupcakeHome.css';
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";//Importing useNavigate hook from React Router
 import { selectCupcake } from "../redux/cupcakeSlice";
 import Cart from "../components/cart";
 import PopupModal from "../components/PopupModel";
  
 const BirthdayCupcake = () => {
-  const [cupcakes, setCupcakes] = useState([]);
+  const [cupcakes, setCupcakes] = useState([]);// State to store cupcakes data
   const [cartShow, setCartShow] = useState(false);
   const [cartItems, setCartItems] = useState([]); 
   const [showPopup, setShowPopup] = useState(false);
@@ -24,7 +24,7 @@ const BirthdayCupcake = () => {
         console.log(data);
         setCupcakes(data);
       })
-      .catch((error) => console.error('Error fetching cakes:', error));
+      .catch((error) => console.error('Error fetching cakes:', error));// Handling errors
   }, []);
  
   const handleView = (cupcake) => {
@@ -59,11 +59,11 @@ const BirthdayCupcake = () => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
+      setCartItems(responseData.cartItems);// Updating cart items state
       setCartShow(true);
 
     } catch (error) {
-      console.error("Error adding to cart:", error);
+      console.error("Error adding to cart:", error);// Handling errors
       alert(`Error: ${error.message}`);
     }
   };
