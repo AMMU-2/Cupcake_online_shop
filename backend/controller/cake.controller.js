@@ -2,7 +2,7 @@ const Cake = require("../models/cake.model");
 const Category = require("../models/category.model");
 const mongoose = require('mongoose');
  
-
+//Adding a New Cake
 exports.addCake = (req, res) => {
     const { cakeName, description, price, categoryName } = req.body;
     const imagePath = req.file ? req.file.path.replace(/\\/g, "/") : null;
@@ -22,7 +22,7 @@ exports.addCake = (req, res) => {
         .then((cake) => res.status(201).json({ message: "Cake added successfully!", cake }))
         .catch((error) => res.status(500).json({ message: "Error adding cake", error }));
 }
- 
+// Fetching All Cakes- home page
 exports.getCakes = (req, res) => {
   Cake.find()
     .then((cakes) =>{
@@ -30,7 +30,7 @@ exports.getCakes = (req, res) => {
     })
     .catch((error) => res.status(500).json({ message: "Error fetching cakes", error }));
 };
-
+//Searching Cakes by Name
 exports.searchCakes = (req, res) => {
     const { query } = req.query; 
  
@@ -52,7 +52,7 @@ exports.searchCakes = (req, res) => {
             res.status(500).json({ message: "Server error", error });
         });
 };
-
+//Get a Cake by ID-veiw page
 exports.viewCake=(req,res)=>{
   const { id } = req.params;
  
