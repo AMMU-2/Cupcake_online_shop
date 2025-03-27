@@ -31,10 +31,11 @@ const authSlice = createSlice({
       localStorage.removeItem("userId");
     },
 
-   
     updateUser: (state, action) => {
-      state.user = { ...state.user, ...action.payload };
-      localStorage.setItem("user", JSON.stringify(state.user)); 
+      if (state.user) {
+        state.user = { ...state.user, ...action.payload };
+        localStorage.setItem("user", JSON.stringify(state.user)); 
+      }
     },
   },
 });
