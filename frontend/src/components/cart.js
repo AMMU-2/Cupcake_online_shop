@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Table } from "react-bootstrap";
 import "../css/cart.css";
-import { setUser } from "../redux/cartSlice"; 
+import { setUser } from "../redux/cartSlice"; // Redux action to update user data
 
 const Cart = ({ show, handleClose }) => {
   const dispatch = useDispatch();
