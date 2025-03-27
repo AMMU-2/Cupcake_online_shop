@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
-
+//Add an Item to the Cart
 exports.addToCart = async (req, res) => {
   try {
     let { userId, cakeId, quantity } = req.body;
@@ -44,7 +44,7 @@ exports.addToCart = async (req, res) => {
   }
 };
 
-
+//Retrieve Cart Items
 exports.getCartWithTotal = async (req, res) => {
   try {
     let { userId } = req.params;
@@ -74,7 +74,7 @@ exports.getCartWithTotal = async (req, res) => {
     return res.status(500).json({ message: "Error fetching cart", error });
   }
 };
-
+//Remove Cart Items
 exports.removeFromCart = async (req, res) => {
   try {
     const { cartItemId } = req.params;
@@ -89,7 +89,7 @@ exports.removeFromCart = async (req, res) => {
     res.status(500).json({ message: "Error removing item", error });
   }
 };
-
+//update Cart Items
 exports.updateCart = async (req, res) => {
   try {
     const { shoppingcartId, quantity } = req.body;
