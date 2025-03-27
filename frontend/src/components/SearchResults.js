@@ -13,6 +13,7 @@ const SearchResults = () => {
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
 
+  // State management for cupcakes, loading state, errors, and modals
   const [cupcakes, setCupcakes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -22,7 +23,7 @@ const SearchResults = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("userId"); // Retrieve user ID from local storage
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -55,14 +56,16 @@ const SearchResults = () => {
     fetchSearchResults();
   }, [searchQuery]);
 
+  // Handle 'View' button click - Redirects to cupcake details page
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake)); 
     navigate("/cupcake-details");
   };
 
+  // Handle 'Add to Cart' button click
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
-      setShowPopup(true);
+      setShowPopup(true); // Show login popup if the user is not logged in
       return;
     }
 
@@ -88,8 +91,8 @@ const SearchResults = () => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
-      setCartShow(true);
+      setCartItems(responseData.cartItems); // Update cart items state
+      setCartShow(true); // Show the cart modal
 
     } catch (error) {
       console.error("Error adding to cart:", error);
@@ -122,12 +125,14 @@ const SearchResults = () => {
         </div>
       )}
 
+      {/* Login Popup Modal - Shown when a user is not logged in */}
       <PopupModal
         show={showPopup}
         onClose={() => setShowPopup(false)}
         onLogin={() => navigate("/login")}
       />
 
+      {/* Cart Modal - Displays cart items */}
       <Cart
         show={cartShow}
         handleClose={() => setCartShow(false)}
