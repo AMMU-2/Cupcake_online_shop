@@ -1,36 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import Cupcake from '../components/cupcake';
-import '../css/cupcakeHome.css';
+import React, { useEffect, useState } from "react";
+import Cupcake from "../components/cupcake";
+import "../css/cupcakeHome.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectCupcake } from "../redux/cupcakeSlice";
 import Cart from "../components/cart";
-import PopupModal from "../components/PopupModel"
- 
+import PopupModal from "../components/PopupModel";
+
 const BirthdayCupcake = () => {
   const [cupcakes, setCupcakes] = useState([]);
   const [cartShow, setCartShow] = useState(false);
-  const [cartItems, setCartItems] = useState([]); 
+  const [cartItems, setCartItems] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userId = localStorage.getItem("userId");
- 
+
   useEffect(() => {
-    fetch('http://localhost:5000/cake/category/Specials') // Adjust the URL to match your backend endpoint
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setCupcakes(data);
-      })
-      .catch((error) => console.error('Error fetching cakes:', error));
+    const fetchCupcakes = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/cake/category/Specials"); // Ensure correct endpoint
+        const data = await response.json();
+
+        if (response.ok) {
+          setCupcakes(data);
+        } else {
+          console.error("Failed to fetch cupcakes:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching cakes:", error);
+      }
+    };
+
+    fetchCupcakes();
   }, []);
- 
+
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
+
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
       setShowPopup(true);
@@ -44,7 +54,7 @@ const BirthdayCupcake = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: userId, 
+          userId,
           cakeId: cupcake._id,
           name: cupcake.cakeName,
           price: cupcake.price,
@@ -61,19 +71,18 @@ const BirthdayCupcake = () => {
       console.log("Cart Updated:", responseData);
       setCartItems(responseData.cartItems);
       setCartShow(true);
-
     } catch (error) {
       console.error("Error adding to cart:", error);
       alert(`Error: ${error.message}`);
     }
   };
- 
+
   return (
     <div className="main">
       <h2>Specials</h2>
       <div className="cupcake-list">
         {cupcakes.length > 0 ? (
-          cupcakes.map(cupcake => (
+          cupcakes.map((cupcake) => (
             <Cupcake
               key={cupcake._id}
               image={cupcake.image}
@@ -89,20 +98,14 @@ const BirthdayCupcake = () => {
           <p>No Specials available.</p>
         )}
       </div>
-      <PopupModal
-            show={showPopup}
-            onClose={() => setShowPopup(false)}
-            onLogin={() => navigate("/login")}
-          />
-      <Cart 
-        show={cartShow} 
-        handleClose={() => setCartShow(false)} 
-        userId={localStorage.getItem("userId")}  // ✅ Fix: Ensure correct userId is passed
-        updateQuantity={(id, amount) => {}}
-        deleteItem={(id) => {}}
-      />
+
+      {/* Popup for login if user is not authenticated */}
+      <PopupModal show={showPopup} onClose={() => setShowPopup(false)} onLogin={() => navigate("/login")} />
+
+      {/* Cart Component */}
+      <Cart show={cartShow} handleClose={() => setCartShow(false)} userId={userId} />
     </div>
   );
 };
- 
+
 export default BirthdayCupcake;
