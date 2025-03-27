@@ -8,12 +8,12 @@ import Cart from "../components/cart";
 import PopupModal from "../components/PopupModel";
  
 const CartoonCupcakes = () => {
-  const [cupcakes, setCupcakes] = useState([]);
-  const [cartShow, setCartShow] = useState(false);
-  const [cartItems, setCartItems] = useState([]); 
-  const [showPopup, setShowPopup] = useState(false);
+  const [cupcakes, setCupcakes] = useState([]);// State to store cupcakes data
+  const [cartShow, setCartShow] = useState(false);// State to control cart visibility
+  const [cartItems, setCartItems] = useState([]); // State to store items in the cart
+  const [showPopup, setShowPopup] = useState(false);// State to control popup visibility
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate();// Initializing
 
   const userId = localStorage.getItem("userId");
  
@@ -28,17 +28,18 @@ const CartoonCupcakes = () => {
   }, []);
  
   const handleView = (cupcake) => {
-    dispatch(selectCupcake(cupcake));
+    dispatch(selectCupcake(cupcake));// Dispatching action to select a cupcake
     navigate("/cupcake-details");
   };
 
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
-      setShowPopup(true);
+      setShowPopup(true);// Show popup if user is not logged in
       return;
     }
 
     try {
+      // Sending request to add cupcake to cart
       const response = await fetch("http://localhost:5000/cart/add", {
         method: "POST",
         headers: {
@@ -60,7 +61,7 @@ const CartoonCupcakes = () => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
+      setCartItems(responseData.cartItems);// Updating
       setCartShow(true);
 
     } catch (error) {
@@ -97,10 +98,10 @@ const CartoonCupcakes = () => {
           />
       <Cart 
         show={cartShow} 
-        handleClose={() => setCartShow(false)} 
+        handleClose={() => setCartShow(false)}// Handling cart close action 
         userId={localStorage.getItem("userId")}  
         updateQuantity={(id, amount) => {}}
-        deleteItem={(id) => {}}
+        deleteItem={(id) => {}}// Placeholder for delete item function
         
       />
     </div>
