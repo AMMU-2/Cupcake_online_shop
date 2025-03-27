@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'; // Importing necessary React
 import Cupcake from '../components/cupcake';// Importing the Cupcake component
 import '../css/global.css';
-import { useDispatch } from "react-redux";Importing useDispatch hook from Redux
+import { useDispatch } from "react-redux";//Importing useDispatch hook from Redux
 import { useNavigate } from "react-router-dom";
 import { selectCupcake } from "../redux/cupcakeSlice";// Importing Redux action to select a cupcake
 import Cart from "../components/cart";// Importing the Cart component
