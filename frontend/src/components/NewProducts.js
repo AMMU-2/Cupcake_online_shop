@@ -5,18 +5,19 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectCupcake } from "../redux/cupcakeSlice";
 import Cart from "../components/cart";
-import PopupModal from "../components/PopupModel"
- 
+import PopupModal from "../components/PopupModel";
+
 const BirthdayCupcake = () => {
-  const [cupcakes, setCupcakes] = useState([]);
-  const [cartShow, setCartShow] = useState(false);
-  const [cartItems, setCartItems] = useState([]); 
-  const [showPopup, setShowPopup] = useState(false);
+  const [cupcakes, setCupcakes] = useState([]); // Store fetched cupcakes
+  const [cartShow, setCartShow] = useState(false); // Control cart visibility
+  const [cartItems, setCartItems] = useState([]); // Store items added to the cart
+  const [showPopup, setShowPopup] = useState(false); // Show login popup when adding to cart without login
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userId = localStorage.getItem("userId");
- 
+  const userId = localStorage.getItem("userId"); // Retrieve logged-in user ID
+
+  // Fetch cupcakes belonging to "New Products" category on component mount
   useEffect(() => {
     fetch('http://localhost:5000/cake/category/New Products') 
       .then((response) => response.json())
@@ -26,14 +27,17 @@ const BirthdayCupcake = () => {
       })
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
- 
+
+  // Handle "View" button click - Navigate to cupcake details page
   const handleView = (cupcake) => {
-    dispatch(selectCupcake(cupcake));
-    navigate("/cupcake-details");
+    dispatch(selectCupcake(cupcake)); // Store selected cupcake in Redux
+    navigate("/cupcake-details"); // Navigate to details page
   };
+
+  // Handle "Add to Cart" functionality
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
-      setShowPopup(true);
+      setShowPopup(true); // Show login popup if user is not logged in
       return;
     }
 
@@ -59,15 +63,15 @@ const BirthdayCupcake = () => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
-      setCartShow(true);
+      setCartItems(responseData.cartItems); // Update cart items state
+      setCartShow(true); // Show cart after adding item
 
     } catch (error) {
       console.error("Error adding to cart:", error);
       alert(`Error: ${error.message}`);
     }
   };
- 
+
   return (
     <div className="main">
       <h2>New Products</h2>
@@ -86,23 +90,27 @@ const BirthdayCupcake = () => {
             />
           ))
         ) : (
-          <p>No New Products available.</p>
+          <p>No New Products available.</p> // Show message if no cupcakes are found
         )}
       </div>
+
+      {/* Popup modal for login prompt when adding to cart */}
       <PopupModal
-            show={showPopup}
-            onClose={() => setShowPopup(false)}
-            onLogin={() => navigate("/login")}
-          />
+        show={showPopup}
+        onClose={() => setShowPopup(false)}
+        onLogin={() => navigate("/login")}
+      />
+
+      {/* Cart component to display added items */}
       <Cart 
         show={cartShow} 
         handleClose={() => setCartShow(false)} 
         userId={localStorage.getItem("userId")} 
-        updateQuantity={(id, amount) => {}}
-        deleteItem={(id) => {}}
+        updateQuantity={(id, amount) => {}} // Placeholder function for updating quantity
+        deleteItem={(id) => {}} // Placeholder function for deleting item
       />
     </div>
   );
 };
- 
+
 export default BirthdayCupcake;
