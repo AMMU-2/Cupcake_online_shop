@@ -8,33 +8,36 @@ import Cart from "./cart";
 import PopupModal from "../components/PopupModel";
 
 const Main = ({ cupcake }) => {
-  const [cupcakes, setCupcakes] = useState([]);
-  const [cartShow, setCartShow] = useState(false);
+  const [cupcakes, setCupcakes] = useState([]); 
+  const [cartShow, setCartShow] = useState(false); 
   const [cartItems, setCartItems] = useState([]); 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); 
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userId"); // Retrieve logged-in user ID from local storage
 
-  const userId = localStorage.getItem("userId");
-
+  // Fetch cupcakes from backend when component mounts
   useEffect(() => {
     fetch('http://localhost:5000/cake/all') 
       .then((response) => response.json())
       .then((data) => {
         console.log("Response", data);
-        setCupcakes(data);
+        setCupcakes(data); // Update state with fetched cupcakes
       })
       .catch((error) => console.error('Error fetching cakes:', error));
   }, []);
 
+  // Handle cupcake 'View' button click: stores selected cupcake in Redux and navigates to details page
   const handleView = (cupcake) => {
     dispatch(selectCupcake(cupcake));
     navigate("/cupcake-details");
   };
 
+  // Handle 'Add to Cart' button click
   const handleAddToCart = async (cupcake) => {
     if (!userId) {
-      setShowPopup(true);
+      setShowPopup(true); // Show login popup if user is not logged in
       return;
     }
 
@@ -60,8 +63,8 @@ const Main = ({ cupcake }) => {
       }
 
       console.log("Cart Updated:", responseData);
-      setCartItems(responseData.cartItems);
-      setCartShow(true);
+      setCartItems(responseData.cartItems); // Update cart items state
+      setCartShow(true); // Show cart modal
 
     } catch (error) {
       console.error("Error adding to cart:", error);
@@ -80,22 +83,26 @@ const Main = ({ cupcake }) => {
             cakeName={cupcake.cakeName}
             description={cupcake.description}
             price={cupcake.price}
-            onView={() => handleView(cupcake)}
-            onAddToCart={() => handleAddToCart(cupcake)}
+            onView={() => handleView(cupcake)} // Pass function to view cupcake details
+            onAddToCart={() => handleAddToCart(cupcake)} // Pass function to add cupcake to cart
           />
         ))}
       </div>
+
+      {/* Popup modal for login prompt when trying to add to cart without logging in */}
       <PopupModal
-            show={showPopup}
-            onClose={() => setShowPopup(false)}
-            onLogin={() => navigate("/login")}
-          />
+        show={showPopup}
+        onClose={() => setShowPopup(false)}
+        onLogin={() => navigate("/login")}
+      />
+
+      {/* Cart component, displayed when cartShow is true */}
       <Cart 
         show={cartShow} 
         handleClose={() => setCartShow(false)} 
         userId={localStorage.getItem("userId")}  
-        updateQuantity={(id, amount) => {}}
-        deleteItem={(id) => {}}
+        updateQuantity={(id, amount) => {}} 
+        deleteItem={(id) => {}} 
       />
     </div>
   );
